@@ -1,29 +1,15 @@
-import { ServicoDataRepository } from './repositories/servico.repository';
 import { Injectable } from '@nestjs/common';
-import { CreateServicoDto } from './dto/create-servico.dto';
-import { UpdateServicoDto } from './dto/update-servico.dto';
+import { ServicoDataRepository } from './repositories/servico.repository';
 
 @Injectable()
 export class ServicoService {
   constructor(private readonly servicoRepository: ServicoDataRepository) {}
 
-  create(createServicoDto: CreateServicoDto) {
-    return 'This action adds a new servico';
-  }
-
   findAll() {
-    return `This action returns all servico`;
+    return this.servicoRepository.obterTodos();
   }
 
   findOne(id: number) {
     return `This action returns a #${id} servico`;
-  }
-
-  update(id: number, updateServicoDto: UpdateServicoDto) {
-    return `This action updates a #${id} servico`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} servico`;
   }
 }

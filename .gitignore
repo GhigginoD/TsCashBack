@@ -33,3 +33,4 @@ lerna-debug.log*
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+src/infra/prisma/migrations/20230620014003_rename_table/migration.sql
