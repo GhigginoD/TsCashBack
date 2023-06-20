@@ -1,0 +1,33 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[Clinte] (
+    [id] INT NOT NULL IDENTITY(1,1),
+    [email] NVARCHAR(1000) NOT NULL,
+    [nome] NVARCHAR(1000) NOT NULL,
+    CONSTRAINT [Clinte_pkey] PRIMARY KEY CLUSTERED ([id]),
+    CONSTRAINT [Clinte_email_key] UNIQUE NONCLUSTERED ([email])
+);
+
+-- CreateTable
+CREATE TABLE [dbo].[Servicos] (
+    [id] INT NOT NULL IDENTITY(1,1),
+    [nome] NVARCHAR(1000) NOT NULL,
+    [preco] FLOAT(53) NOT NULL,
+    CONSTRAINT [Servicos_pkey] PRIMARY KEY CLUSTERED ([id])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH

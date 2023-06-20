@@ -1,0 +1,25 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["views"]
+
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Cliente {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+  nome  String 
+}
+
+model Servicos {
+  id Int @id @default(autoincrement())
+  nome String
+  preco Float
+}
